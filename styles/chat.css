@@ -1,0 +1,219 @@
+
+button {
+        border:none;
+        height:40px;
+        width:80px;
+        color:white;
+        text-align:center;
+        background-color:#333333;
+        transition:0.2s;
+    
+    }
+    button:hover {
+        cursor:pointer;
+        background-color:#111111;
+    }
+    button:active {
+        background-color:white;
+        color:black;
+    }
+        body {
+ 
+        background-repeat: none;
+        background-size: 100%;
+        margin:0;
+        background-image: url('images/bg.jpg');
+     }
+    
+    .icon-bar {
+  position:fixed;      
+  z-index: 5;      
+  height:100%;      
+  width: 90px; 
+  background-color: #555; 
+}
+
+.icon-bar a {
+  display: block; 
+  text-align: center;
+  padding: 16px; 
+  transition: all 0.3s ease; 
+  color: white; 
+  font-size: 36px; 
+}
+
+.icon-bar a:hover {
+  background-color: #000; 
+}
+
+.active {
+  background-color: #4CAF50; 
+   }
+   #usermsg { font:12px arial; }
+  
+#exit {
+    color:#white;
+    text-decoration:none; }
+  
+    a:hover { text-decoration:underline; }
+.butt{
+    border-style:none;
+    background-color:white;
+    color:#111111;
+    opacity:0.9;
+    transition:0.2s;
+}
+.butt:hover{
+    opacity:1;
+    color:white;
+}
+.butt:active{
+    background-color:#111111;
+    color:white;
+}
+.butt#submitmsg{
+    height:30px;
+    width:30px;
+    border-radius:50%;
+}
+
+#wrapper, #loginform {
+    right:0px;
+    top:25px;
+    position:fixed;
+    z-index:5;
+    margin:0 auto;
+    padding-bottom:25px;
+    background-color:#80cc80;
+    width:400px;
+    border:1px solid #ACD8F0;
+    padding:0; }    
+  
+#loginform { padding-top:18px; }
+  
+    #loginform p { margin: 5px; }
+  
+#chatbox {
+    text-align:left;
+    margin:0 auto;
+    padding:10px;
+    background:#fff;
+    height:350px;
+    width:430px;
+    border:1px solid #ACD8F0;
+    overflow:auto; }
+  
+#usermsg {
+    width:500px;
+    border:1px solid #ACD8F0; }
+  
+#submit { width: 60px; }
+  
+.error { color: #ff0000; }
+  
+#menu { padding:12.5px 25px 12.5px 25px; }
+  
+.welcome { float:left; color:white;}
+  
+.logout { float:right; }
+  
+.msgln { margin:0 0 2px 0; }
+   
+#usermsg { font:12px arial; }
+  
+#exit {
+    color:#white;
+    text-decoration:none; }
+  
+    a:hover { text-decoration:underline; }
+.butt{
+    border-style:none;
+    background-color:white;
+    color:#111111;
+    opacity:0.9;
+    transition:0.2s;
+}
+.butt:hover{
+    opacity:1;
+}
+.butt:active{
+    background-color:#111111;
+    color:white;
+}
+.butt#submitmsg{
+    height:30px;
+    width:30px;
+    border-radius:50%;
+}
+
+#wrapper, #loginform {
+    margin:0 auto;
+    padding-bottom:25px;
+    background:#80cc80;
+    width:504px;
+    border:1px solid #ACD8F0; }
+  
+#loginform { padding-top:18px; }
+  
+    #loginform p { margin: 5px; }
+  
+#chatbox {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:270px;
+    width:430px;
+    border:1px solid #ACD8F0;
+    overflow:auto; }
+  
+#usermsg {
+    width:395px;
+    border:1px solid #ACD8F0; }
+  
+#submit { width: 60px; }
+  
+.error { color: #ff0000; }
+  
+#menu { padding:12.5px 25px 12.5px 25px; }
+  
+.welcome { float:left; color:white;}
+  
+.logout { float:right; }
+  
+.msgln { margin:0 0 2px 0; }
+/* Chat containers */
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+
+.time-left {
+  float: left;
+  color: #999;
+}
