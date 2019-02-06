@@ -5,15 +5,16 @@
 
 
 
-	$comm= $_POST['community'];
-	$name=$_SESSION['name'];
-$city=$_SESSION['loc'];
 session_start();
-	define('DB_HOST', 'localhost');
+
+$comm= $_POST['community'];
+$name=$_SESSION['name'];
+$city=$_SESSION['loc'];
+define('DB_HOST', 'localhost');
 define('DB_NAME', 'city');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
-
+echo "<script>alert('".$name."   ".$city."');</script>";
 $con = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error());
 $db = mysql_select_db(DB_NAME, $con) or die("Failed to connect to MySQL: " . mysql_error());
 $query = mysql_query("select * from communities where name='$comm' and city='$city'");

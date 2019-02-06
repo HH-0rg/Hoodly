@@ -6,7 +6,7 @@
 	body{
 		margin: 0;
 		padding: 0;
-		background-image: url('bg.jpg');
+		background-image: url('images/bg.jpg');
 		background-size: cover;
 	}
 		.nav{

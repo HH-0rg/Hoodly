@@ -33,6 +33,7 @@ else{
 $_SESSION['name']=$name;
 $_SESSION['loc']="roorkee";
 $_SESSION['ccity']="roorkee";
+$_SESSION['login']="true";
 
 echo "<script> window.location='comsign.php' </script>"	;}
 }

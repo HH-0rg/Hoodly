@@ -27,11 +27,14 @@ $ename= $row[1];
 $des= $row[2];
 $date= $row[3];
 
-$admin=mysql_query("SELECT admin FROM ".$q." WHERE name='".$name."'") or die(mysql_error());
-   
+$query=mysql_query("SELECT * FROM ".$q." WHERE name='".$name."'") or die(mysql_error());
+  $row = mysql_fetch_array($query);
+  $admin=$row[1];
+ 
  ?>
 <html>
 <head>
+
 	    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 	<link rel="stylesheet" type="text/css" href="styles/chat.css">
@@ -40,6 +43,7 @@ $admin=mysql_query("SELECT admin FROM ".$q." WHERE name='".$name."'") or die(mys
     </script>
 </head>
 <body>
+     <script>alert('the value of the admin attribute is <?php echo $admin ?>')</script>
 	<div id="wrapper" style="width:50%; background-color:#5356ad; align-self: center; top:0px; align-content:center;margin-top:30px; margin-right:25%; height:85%; border-style:none;">
     <div id="menu">
         <h2 class="welcome"><b>Welcome, <?php

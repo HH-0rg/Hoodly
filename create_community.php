@@ -6,7 +6,7 @@
 	body{
 		margin: 0;
 		padding: 0;
-		background-image: url('bg.jpg');
+		background-image: url('images/bg.jpg');
 		background-size: cover;
 	}
 		.nav{
@@ -29,11 +29,13 @@ input{
 			border: solid 1px ;
 		}
 		#butt{
-			transition: all 1s ease;
+			color:white;
+			background-color: #ff6600;
+			transition: all 0.3s ease;
 		}
 		#butt:hover{
-			color: white;
-			background-color: black;
+			color: #ff6600;
+			background-color: white;
 		}
 	</style>
 </head>

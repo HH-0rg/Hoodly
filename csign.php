@@ -2,8 +2,8 @@
 session_start(); 
 $q=$_REQUEST['w'];
 if(!isset($q)){$q=$_GET['w'];}
-$name="mohit"; //REMEMBER TO REMOVE FOR FUCK'S SAKE. THIS IS SUPPOSED TO BE REPLACED BY SESSION VARIABLES
-$loc="roorkee";
+$name=$_SESSION['name'];
+$loc=$_SESSION['loc'];
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'city');
 define('DB_USER', 'root');

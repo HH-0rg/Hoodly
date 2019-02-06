@@ -1,4 +1,11 @@
 
+<?php
+session_start();
+
+ if(isset($_REQUEST['logout'])){
+if($_REQUEST['logout']=='true'){session_destroy();}
+ }
+ ?>
 
 <html>
 <head>
@@ -340,6 +347,5 @@ document.getElementById('logbtn').addEventListener('click',func);
 </script>	
 
 
-<!--<img src="images/circle.gif" style="position:fixed; left:0%; margin-left:-100px; height:; top:55%;">-->
 </body>	
 </html>

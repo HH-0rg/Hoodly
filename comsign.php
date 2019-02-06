@@ -19,11 +19,11 @@ $log=$_SESSION['log'];
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="styles/navbar.css" />
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>city communitites</title>
-	<style type="text/css">
-	.vote {
+  <link rel="stylesheet" href="styles/navbar.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>city communitites</title>
+  <style type="text/css">
+  .vote {
   display: inline-block;
   overflow: hidden;
   width: 40px;
@@ -158,54 +158,55 @@ body {
     border: 1px solid #ccc;  
   }
 }
-	html{
-		height: 100vh;
-	}
-	body{
-		height: 100vh;
-		padding: 0;
-		margin: 0;
-	}
-	.cont {
-		height: 100%;
-		display: grid;
+  html{
+    height: 100vh;
+  }
+  body{
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+  .cont {
+    height: 100%;
+    display: grid;
   grid-template-columns:  20px auto 20px 500px 20px;
   grid-template-rows: 60px 15px auto 15px 30% 15px;
   justify-items:stretch;
   align-items:stretch;
 }
 .top{
-	grid-column: 1 / 6;
-	grid-row: 1 / 2;
-	background-color: #5356ad;
+  grid-column: 1 / 6;
+  grid-row: 1 / 2;
+  background-color: #5356ad;
 }
 .comm{
-	grid-column: 2 / 3;
-	grid-row: 3 / 6;
-	text-align: center;
-	overflow-y: auto;
+  grid-column: 2 / 3;
+  grid-row: 3 / 6;
+  text-align: center;
+  overflow-y: auto;
 }
 .chat{
-	grid-column: 4 / 6;
-	grid-row: 2 / 7;
-	background-color: #5356ad;
+  grid-column: 4 / 6;
+  grid-row: 2 / 7;
+  background-color: #5356ad;
 }
-		h1{
-			font-family: Calibri;
-			font-size:70px;
-			margin: 0;
-			padding: 0;
-		}
+    h1{
+      font-family: Calibri;
+      font-size:70px;
+      margin: 0;
+      padding: 0;
+    }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   display: inline-block;
   margin: 10px;
   position:relative;
-  z-index:8;
+  z-index:1;
+  text-align:center;
 }
 img{
-	width:100px;
+  width:100px;
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
@@ -216,7 +217,7 @@ img{
 }
 
 h4{
-	margin: 10px;
+  margin: 10px;
 }
 #result{
   visibility: hidden; 
@@ -251,33 +252,52 @@ h4{
   right: 20px;
 }
 #map{
-	width: 60vw;
-	height: 80vh;
+  width: 60vw;
+  height: 80vh;
   position: relative;
   top: 0;
   left:0;
   z-index: 100;
 }
 #lgbt:hover{
-background-color:#ff1a1a;
-	
+  background-color:#ff1a1a;
+  
 }
+#overlay {
+  position: fixed; 
+  display: block; 
+  width: 100%; 
+  height: 100%; 
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); 
+  z-index: -1;
+   transition: opacity 1s;
+  opacity:0;
+
+}
+
 </style>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-	<link rel="stylesheet" type="text/css" href="styles/chat.css">
-	<script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet" type="text/css" href="styles/chat.css">
+  <script>
     document.getElementById("send").addEventListener("mousedown",function(){document.getElementById("send").class="fa fa-paper-plane-o"})
     </script>
 </head>
 <body>
-	<img src="images/circle.gif" style="position:absolute; height:400px; width:400px; z-index:7; bottom:0px; left:0px; margin-left:-150px; margin-bottom:-150px; opacity:0.7;">
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+ <div id="overlay"></div>
+<?php if(!isset($name)){echo "<script>window.location='index.php'</script>";} ?>
+
+  <img src="images/circle.gif" style="position:absolute; height:400px; width:400px; z-index:2; bottom:0px; left:0px; margin-left:-150px; margin-bottom:-150px; opacity:0.7;">
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="z-index:3; display:none" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large"
-  onclick="w3_close()" style="text-align:center;"><h5>Collapse &times</h5></button>
+  onclick="w3_close()" style="text-align:center; padding:0px; "><h5>Collapse &times</h5></button>
   <img src="user.jpg"  style="height:200px; width:200px; border-radius:50%;"><br><br><br>
   
-  <a href="index1.php" style="text-align:center;margin-top:60px;" class="w3-bar-item w3-button"><h3>My communities</h3></a>
+  <a style="text-align:center;margin-top:60px;" class="w3-bar-item w3-button"><h3>My communities</h3></button>
   <a href="create_community.php" style="text-align:center;" class="w3-bar-item w3-button"><h3>Create A community</h3></a>
   <a href="index.php?logout=true" style="text-align:center;" class="w3-bar-item w3-button" id="lgbt"><h3>Log out</h3></a>
 </div>
@@ -306,8 +326,8 @@ $row = mysql_fetch_array($query);
 while($row){
 
 
-	echo "<a href='details.php?q=".$row[0]."'><div class='card'>
-  <img src='HH.jpg' alt='Avatar'>
+  echo "<a href='details.php?q=".$row[0]."'><div class='card' style='width:180px;'>
+  <img src='HH.jpg' style='height:100px; width:100px;' alt='Avatar'>
   <div class='container'>
     <h4><b>".$row[0]."</b></h4>
   </div>
@@ -320,7 +340,7 @@ $row = mysql_fetch_array($query);
 </div>
 
 <!--<div class="event">
-	<?php
+  <?php
 ?>
 </div>-->
 
@@ -405,50 +425,57 @@ function sender(){
        
 <script type="text/javascript">
 function w3_open() {
-  document.getElementById("main").style.marginLeft = "25%";
+
   document.getElementById("mySidebar").style.width = "25%";
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("openNav").style.display = 'none';
+  document.getElementById('overlay').style.opacity = 0.6;
+  document.getElementById('overlay').style.zIndex=2;
 }
 function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
+ 
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("openNav").style.display = "inline-block";
+  document.getElementById('overlay').style.zIndex= -2;
+    document.getElementById('overlay').style.opacity = 0;
+
 }
+    document.getElementById('overlay').addEventListener('click',function(){w3_close();})
+
 for (const btn of document.querySelectorAll('.vote')) {
   btn.addEventListener('click', event => {
     event.target.classList.toggle('on');
   });
 }
 function kholo(t) {
-	document.getElementById("result").style.visibility = "visible";
-	document.getElementById("r"+t).style.display = "block";
-	document.getElementById("result").style.marginTop = "10px";
-	document.getElementById("main").style.opacity = "0.5";
-	document.body.scrollTop=0;
-	
+  document.getElementById("result").style.visibility = "visible";
+  document.getElementById("r"+t).style.display = "block";
+  document.getElementById("result").style.marginTop = "10px";
+  document.getElementById("main").style.opacity = "0.5";
+  document.body.scrollTop=0;
+  
 }
 
 function band_karo(a) {
-	document.getElementById("result").style.marginTop = "-100px";
-	document.getElementById("main").style.opacity = "1";
-	document.getElementById("result").style.visibility = "hidden";
-	document.getElementById("r"+a).style.display = "none";
-	document.body.scrollTop= 0;
+  document.getElementById("result").style.marginTop = "-100px";
+  document.getElementById("main").style.opacity = "1";
+  document.getElementById("result").style.visibility = "hidden";
+  document.getElementById("r"+a).style.display = "none";
+  document.body.scrollTop= 0;
 }
      function myMap() {
- 	 var mapCanvas = document.getElementById("map");
-  	 var myCenter = new google.maps.LatLng(29.855535,77.8798866); 
-  	 var mapOptions = {
-  	 	center: myCenter, zoom: 13,panControl: true,
+   var mapCanvas = document.getElementById("map");
+     var myCenter = new google.maps.LatLng(29.855535,77.8798866); 
+     var mapOptions = {
+      center: myCenter, zoom: 13,panControl: true,
     zoomControl: true,
     mapTypeControl: true,
     scaleControl: true,
     streetViewControl: true,
     overviewMapControl: true,
     rotateControl: true};
-  	 var map = new google.maps.Map(mapCanvas,mapOptions);
-  	 var request = {
+     var map = new google.maps.Map(mapCanvas,mapOptions);
+     var request = {
           query: 'Roorkee, India',
           fields: ['name', 'geometry'],
         };
@@ -458,13 +485,10 @@ function band_karo(a) {
             map.setCenter(results[0].geometry.location);
           }
         });
-  	 var marker = new google.maps.Marker({
+     var marker = new google.maps.Marker({
      position: myCenter,
   });
- /* marker.setMap(map);
-/*var infowindow = new google.maps.InfoWindow({
-  content:"<b>DAV Public School</b><br>Sreshtha Vihar,<br>Mahajan Complex,<br>Shreshtha Vihar,<br>Anand Vihar,<br>Delhi-110092<br>Phone: 011 2214 4102<br>"
-  });*/
+
 infowindow.open(map,marker);}
 
 
