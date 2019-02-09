@@ -19,145 +19,14 @@ $log=$_SESSION['log'];
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="styles/cards.css" />
   <link rel="stylesheet" href="styles/navbar.css" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>city communitites</title>
   <style type="text/css">
-  .vote {
-  display: inline-block;
-  overflow: hidden;
-  width: 40px;
-  height: 25px;
-  cursor: pointer;
-  background: url('http://i.stack.imgur.com/iqN2k.png');
-  background-position: 0 -25px;
-} 
 
-
-.vote.on {
-  background-position: 0 2px;
-}
 * {box-sizing: border-box;}
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #e9e9e9;
-}
-
-.topnav a {
-  float:right;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #2196F3;
-  color: white;
-}
-
-.topnav input[type=text] {
-  float: right;
-  padding: 6px;
-  margin-top: 8px;
-  margin-right: 16px;
-  border: none;
-  font-size: 17px;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav a, .topnav input[type=text] {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
-}.vote {
-  display: inline-block;
-  overflow: hidden;
-  width: 40px;
-  height: 25px;
-  cursor: pointer;
-  background: url('http://i.stack.imgur.com/iqN2k.png');
-  background-position: 0 -25px;
-} 
-
-
-.vote.on {
-  background-position: 0 2px;
-}
-* {box-sizing: border-box;}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #e9e9e9;
-}
-
-.topnav a {
-  float:right;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #2196F3;
-  color: white;
-}
-
-.topnav input[type=text] {
-  float: right;
-  padding: 6px;
-  margin-top: 8px;
-  margin-right: 16px;
-  border: none;
-  font-size: 17px;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav a, .topnav input[type=text] {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
-}
   html{
     height: 100vh;
   }
@@ -174,6 +43,11 @@ body {
   justify-items:stretch;
   align-items:stretch;
 }
+li{
+  margin:0;
+  padding: -.2em;
+
+}
 .top{
   grid-column: 1 / 6;
   grid-row: 1 / 2;
@@ -182,8 +56,9 @@ body {
 .comm{
   grid-column: 2 / 3;
   grid-row: 3 / 6;
-  text-align: center;
+  text-align: left;
   overflow-y: auto;
+
 }
 .chat{
   grid-column: 4 / 6;
@@ -196,21 +71,10 @@ body {
       margin: 0;
       padding: 0;
     }
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  display: inline-block;
-  margin: 10px;
-  position:relative;
-  z-index:1;
-  text-align:center;
-}
 img{
   width:100px;
 }
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
-}
+
 
 .container {
   padding: 2px 16px;
@@ -280,6 +144,7 @@ h4{
 }
 
 </style>
+<script type="text/javascript" src="scripts/cards.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
   <link rel="stylesheet" type="text/css" href="styles/chat.css">
@@ -316,6 +181,7 @@ h4{
 
 
 <div class='comm'>
+<ul class="card-list" style="padding:0px; ">
 <?php
 $query = mysql_query("SELECT name FROM communities WHERE city='".$loc."';" ) or die("Failed to connect to MySQL: " . mysql_error());
 
@@ -326,16 +192,20 @@ $row = mysql_fetch_array($query);
 while($row){
 
 
-  echo "<a href='details.php?q=".$row[0]."'><div class='card' style='width:180px;'>
-  <img src='HH.jpg' style='height:100px; width:100px;' alt='Avatar'>
-  <div class='container'>
-    <h4><b>".$row[0]."</b></h4>
-  </div>
-</div></a>";
+echo "<li class='card' style='margin:0px;'>
+    <a class='card-image' href='details.php?q=".$row[0]."'  style='background-image: url(images/HH.jpg)' data-image-full='images/HH.jpg'>
+      <img src='images/HH.jpg' alt='Psychopomp' />
+    </a>
+    <a class='card-description' href='details.php?q=".$row[0]."'>
+      <h2 style='text-align:center;'>".$row[0]."</h2>
+      <p style='text-align:center;'>".$row[0]."</p>
+    </a>
+  </li>";
 $row = mysql_fetch_array($query);
 }
 
 ?>
+</ul>
 <br><br>
 </div>
 

@@ -43,7 +43,6 @@ $query=mysql_query("SELECT * FROM ".$q." WHERE name='".$name."'") or die(mysql_e
     </script>
 </head>
 <body>
-     <script>alert('the value of the admin attribute is <?php echo $admin ?>')</script>
 	<div id="wrapper" style="width:50%; background-color:#5356ad; align-self: center; top:0px; align-content:center;margin-top:30px; margin-right:25%; height:85%; border-style:none;">
     <div id="menu">
         <h2 class="welcome"><b>Welcome, <?php

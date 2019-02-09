@@ -16,6 +16,7 @@ if($_REQUEST['logout']=='true'){session_destroy();}
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);
 body {
+  margin:0px;
   position: absolute;
   left: 0;
   top: 0;
@@ -253,15 +254,23 @@ body {
   opacity: 0;
 }
 
-.rabbit {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 3;
-  fill: #fff;
-}
+
+.footer{
+	width:100%;
+	position:fixed;
+	bottom:0px;
+	height:60px;
+	background-color: #999ede;
+	border-style:solid none none none;
+	border-width:4px;
+	border-color:#ff73b3;
+	opacity:0.6;
+	text-align: right;
+
+	}
+a{
+	text-decoration: none;
+}	
 </style>
 </head>
 <body>
@@ -317,6 +326,13 @@ body {
       </div>
     </div>
   </div>
+</div>
+<div class="footer">
+	<ul style="list-style-type: none; font-size:10px; margin-right:5px;">
+		<li><a href="cool url"><b>about</b></a></li>
+		<li><a href='another cool url'><b>contact us</b></a></li>
+		<li><a href="cool url returns"><b>business</b></a></li>
+	</ul>
 </div>
 <script>
 $(".info-item .btn").click(function(){
